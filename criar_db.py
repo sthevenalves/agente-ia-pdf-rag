@@ -1,11 +1,8 @@
-    # carregar_documentos
-    # dividir os documentos em pedaços de texto(chunks)
-    # vetorizar os chunks com o processo de embedding
 
 from langchain_community.document_loaders import PyPDFDirectoryLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_chroma.vectorstores import Chroma
-from langchain_openai import OpenAIEmbeddings
+from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -24,16 +21,26 @@ def carregar_documentos():
 
 def dividir_chunks(documentos):
     separador_documentos = RecursiveCharacterTextSplitter(
-        chunk_size = 2000, 
-        chunk_overlap = 500,
-        length_function = len,
-        add_start_index = True
+        chunk_size=2000,
+        chunk_overlap=500,
+        length_function=len,
+        add_start_index=True
     )
-    Chunks = separador_documentos.split_documents(documentos)
-    print(len(Chunks))
-    return Chunks
+    chunks = separador_documentos.split_documents(documentos)
+    print(len(chunks))
+    return chunks
 
 def vetorizar_chunks(chunks):
-    pass
+    embeddings = GoogleGenerativeAIEmbeddings(
+        model="gemini-embedding-2-preview"
+    )
+
+    db = Chroma.from_documents(
+        chunks,
+        embedding=embeddings,
+        persist_directory="db"
+    )
+
+    print("Banco de dados criado!")
 
 criar_db()
