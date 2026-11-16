@@ -19,3 +19,13 @@ responda não sei te dizer isso"""
 
 def perguntar():
     pergunta = input("Escreva sua pergunta: ")
+
+    # carregar o banco de dados
+    funcao_embedding = GoogleGenerativeAIEmbeddings(
+        model="gemini-embedding-2-preview"
+    )
+
+    db = Chroma(
+        persist_directory=CAMINHO_DB,
+        embedding_function=funcao_embedding
+    )
