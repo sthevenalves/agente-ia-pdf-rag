@@ -1,5 +1,13 @@
 # Agente de IA com Python — RAG com LangChain
 
+![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)
+![LangChain](https://img.shields.io/badge/LangChain-Framework-1C3C3C?logo=langchain&logoColor=white)
+![Google Gemini](https://img.shields.io/badge/Google-Gemini-4285F4?logo=google&logoColor=white)
+![ChromaDB](https://img.shields.io/badge/ChromaDB-Vector%20Database-FF6F00)
+![RAG](https://img.shields.io/badge/Architecture-RAG-6A5ACD)
+![PyPDF](https://img.shields.io/badge/PDF-PyPDF-DC143C)
+![License](https://img.shields.io/badge/license-MIT-green)
+
 Projeto de um agente de Inteligência Artificial capaz de consultar documentos PDF e responder perguntas com base nas informações encontradas neles. A aplicação utiliza a arquitetura **RAG (Retrieval-Augmented Generation)**, integrando LangChain, Google Gemini e ChromaDB.
 
 ## Objetivo
